@@ -4,7 +4,7 @@
 const models = require('../models/')
 
 exports.index = function(req, res) {
-  models.University.find({}, null, {limit: 4})
+  models.University.find({}, null, {limit: 3})
   .populate('majors')
   .exec()
   .then(universities => {

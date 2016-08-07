@@ -281,3 +281,14 @@ textarea {
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
+
+#psyduck {
+    width: 72;
+    width: 2.4em;
+    /* margin-bottom: 600px; */
+    padding: 0;
+    display: block;
+    top: 7px;
+    left: 30px;
+    position: absolute;
+}

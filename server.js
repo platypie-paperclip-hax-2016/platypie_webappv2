@@ -122,7 +122,7 @@ if (app.get('env') === 'production') {
   });
 }
 
-app.listen(app.get('port'), '128.199.219.234', function() {
+app.listen(app.get('port'), 'localhost', function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 

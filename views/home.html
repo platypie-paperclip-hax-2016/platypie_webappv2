@@ -47,10 +47,16 @@
     <div class="col-sm-4">
       <div class="panel">
         <div class="panel-body">
-          <h3>Heading</h3>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui.</p>
+          <h3>Testimonials</h3>
+          <ul class="list-group">
+            {% for item in prash %}
+            <li class="list-group-item">
+              <h4>{{item.title}}</h4>
+              <h6>{{item.date}}</h6>
+              <h5>{{item.author}}</h5>
+            </li>
+            {% endfor %}
+          </ul>
           <a href="#" role="button" class="btn btn-default">View details</a>
         </div>
       </div>
@@ -58,11 +64,8 @@
     <div class="col-sm-4">
       <div class="panel">
         <div class="panel-body">
-          <h3>Heading</h3>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui.</p>
-          <a href="#" role="button" class="btn btn-default">View details</a>
+          <h3>My Planner</h3>
+          <div class='calendar_modern' id='calendar'>
         </div>
       </div>
     </div>

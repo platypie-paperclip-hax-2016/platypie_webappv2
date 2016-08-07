@@ -283,7 +283,7 @@ textarea {
 }
 
 #psyduck {
-    width: 72;
+    width: 72px;
     width: 2.4em;
     /* margin-bottom: 600px; */
     padding: 0;
@@ -291,4 +291,12 @@ textarea {
     top: 7px;
     left: 30px;
     position: absolute;
+}
+
+.uni-list-wrapper {
+    height: 464px;
+}
+
+.block-image {
+  width: 320px;
 }

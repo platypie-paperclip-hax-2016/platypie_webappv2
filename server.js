@@ -104,6 +104,7 @@ const universityController = generateControllers(models.University)
 const majorController = generateControllers(models.Major)
 const industryController = generateControllers(models.Industry)
 const cityController = generateControllers(models.City)
+const {universityPage} = require("./controllers/wiki")
 
 app.post('/api/university', universityController.create)
 app.get('/api/university', universityController.find)
@@ -113,6 +114,7 @@ app.post('/api/industry', industryController.create)
 app.get('/api/industry', industryController.find)
 app.post('/api/city', cityController.create)
 app.get('/api/city', cityController.find)
+app.get("/university/:id", universityPage)
 
 // Production error handler
 if (app.get('env') === 'production') {

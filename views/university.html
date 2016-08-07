@@ -1,0 +1,28 @@
+{% extends "wiki.html" %}
+
+
+{% block one %}
+<div class="panel-body">
+    <a href="{{uni.websiteUrl}}"><img class="block-image" src="{{uni.imageUrl}}"/></a>
+    <h3>{{uni.name}}</h3>
+    <p>Location: {{uni.city.name}}</p>
+    <p>Founded: {{uni.establishedDate}}</p>
+    <b>Summary: </b>
+    <p>{{uni.summary}}</p>
+</div>
+{% endblock %}
+
+{% block two %}
+<ul class="list-group uni-list-wrapper">
+    <li class="list-group-item">Schools</li>
+    <li class="list-group-item">Financials</li>
+    <li class="list-group-item">Housing</li>
+    <li class="list-group-item">Facilities</li>
+</ul>
+{% endblock %}
+
+{% block three %}
+<div class="panel-body">
+
+</div>
+{% endblock %}

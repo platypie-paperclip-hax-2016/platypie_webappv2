@@ -15,6 +15,9 @@ var passport = require('passport');
 // Load environment variables from .env file
 dotenv.load();
 
+// Models
+var models = require('./models')
+
 // Controllers
 var HomeController = require('./controllers/home');
 var userController = require('./controllers/user');
@@ -73,6 +76,44 @@ app.get('/unlink/:provider', userController.ensureAuthenticated, userController.
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/login' }));
 
+const generateControllers = function (model) {
+  function create(req, res, next) {
+    if (Array.isArray(req.body)) {
+      Promise.all(req.body.map(obj => {
+        const doc = new model(obj)
+        return doc.save()
+      }))
+      .then(() => res.send(req.body))
+      .catch(err => next(err))
+    }
+    else {
+      const doc = new model(req.body)
+      doc.save()
+      .then(() => res.send(doc))
+      .catch(err => next(err))
+    }
+  }
+  function find (req, res, next) {
+    model.find(req.query).exec()
+    .then((docs) => res.send(docs))
+    .catch(err => next(err))
+  }
+  return {find, create}
+}
+const universityController = generateControllers(models.University)
+const majorController = generateControllers(models.Major)
+const industryController = generateControllers(models.Industry)
+const cityController = generateControllers(models.City)
+
+app.post('/api/university', universityController.create)
+app.get('/api/university', universityController.find)
+app.post('/api/major', majorController.create)
+app.get('/api/major', majorController.find)
+app.post('/api/industry', industryController.create)
+app.get('/api/industry', industryController.find)
+app.post('/api/city', cityController.create)
+app.get('/api/city', cityController.find)
+
 // Production error handler
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
@@ -81,7 +122,7 @@ if (app.get('env') === 'production') {
   });
 }
 
-app.listen(app.get('port'), function() {
+app.listen(app.get('port'), '128.199.219.234', function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
